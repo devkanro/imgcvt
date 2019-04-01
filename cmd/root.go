@@ -16,7 +16,7 @@ var rootCmd = &cobra.Command{
 	Use:     "imgcvt",
 	Short:   "imgcvt is universal image converter",
 	Long:    `A converter written in go for image formats png, jpg etc.`,
-	Version: "v1.0",
+	Version: "v1.1",
 }
 
 var output string
@@ -43,13 +43,19 @@ func handleArgs(args []string, converter func(io.Writer, image.Image) error) err
 			}
 		} else {
 			var outputFilePath string
-			if len(args) == 1 {
-				outputFilePath = output
+
+			inputFilePath := filepath.Join(path)
+			if output == "" {
+				outputFilePath = inputFilePath[:len(inputFilePath)-len(filepath.Ext(inputFilePath))] + ".png"
 			} else {
-				outputFilePath = path[:len(path)-len(filepath.Ext(path))] + ".png"
+				outputFilePath = filepath.Join(output)
+				if filepath.Ext(outputFilePath) != ".png" {
+					name := filepath.Base(inputFilePath)
+					outputFilePath = filepath.Join(outputFilePath, name[:len(name)-len(filepath.Ext(name))]+".png")
+				}
 			}
 
-			err := handleFile(path, outputFilePath, converter)
+			err := handleFile(inputFilePath, outputFilePath, converter)
 			if err != nil {
 				fmt.Printf("Skip convert file '%s' due to error: %s\n", path, err)
 				continue
