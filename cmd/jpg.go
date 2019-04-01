@@ -7,7 +7,7 @@ import (
 	"io"
 )
 
-var jpgOption = &jpeg.Options{100}
+var jpgOption = &jpeg.Options{Quality: 100}
 
 func init() {
 	rootCmd.AddCommand(jpgCmd)

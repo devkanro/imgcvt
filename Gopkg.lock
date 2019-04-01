@@ -2,6 +2,14 @@
 
 
 [[projects]]
+  digest = "1:6bbfd04a48fd99efcdb49e6a9221066d1d2b706394e9d81e9ad8770578a95b95"
+  name = "github.com/chai2010/webp"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "19c584e49a98c31e2138c82fd0108435cd80d182"
+  version = "v1.1.0"
+
+[[projects]]
   digest = "1:870d441fe217b8e689d7949fef6e43efbc787e50f200cb1e70dbca9204a1d6be"
   name = "github.com/inconshreveable/mousetrap"
   packages = ["."]
@@ -25,9 +33,21 @@
   revision = "298182f68c66c05229eb03ac171abe6e309ee79a"
   version = "v1.0.3"
 
+[[projects]]
+  branch = "master"
+  digest = "1:94db3c4e31e3144080003ac21bdd0f6d5c05f466da7e634e101ba0e12943f5d3"
+  name = "golang.org/x/image"
+  packages = ["bmp"]
+  pruneopts = "UT"
+  revision = "3fc05d484e9f77dd51816890e05f2602e4ca4d65"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = ["github.com/spf13/cobra"]
+  input-imports = [
+    "github.com/chai2010/webp",
+    "github.com/spf13/cobra",
+    "golang.org/x/image/bmp",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1

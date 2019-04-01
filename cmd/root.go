@@ -16,7 +16,7 @@ var rootCmd = &cobra.Command{
 	Use:     "imgcvt",
 	Short:   "imgcvt is universal image converter",
 	Long:    `A converter written in go for image formats png, jpg etc.`,
-	Version: "v1.1",
+	Version: "v1.2",
 }
 
 var output string
